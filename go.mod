@@ -1,4 +1,4 @@
-module github.com/moutend/go-wca
+module github.com/haering/go-wca
 
 go 1.13
 

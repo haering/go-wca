@@ -36,13 +36,13 @@ func (v *IAudioEndpointVolume) VTable() *IAudioEndpointVolumeVtbl {
 	return (*IAudioEndpointVolumeVtbl)(unsafe.Pointer(v.RawVTable))
 }
 
-func (v *IAudioEndpointVolume) RegisterControlChangeNotify() (err error) {
-	err = aevRegisterControlChangeNotify()
+func (v *IAudioEndpointVolume) RegisterControlChangeNotify(newChangeNotify *IAudioEndpointVolumeEvents) (err error) {
+	err = aevRegisterControlChangeNotify(v, newChangeNotify)
 	return
 }
 
-func (v *IAudioEndpointVolume) UnregisterControlChangeNotify() (err error) {
-	err = aevUnregisterControlChangeNotify()
+func (v *IAudioEndpointVolume) UnregisterControlChangeNotify(newChangeNotify *IAudioEndpointVolumeEvents) (err error) {
+	err = aevUnregisterControlChangeNotify(v, newChangeNotify)
 	return
 }
 
