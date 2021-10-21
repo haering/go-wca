@@ -5,5 +5,8 @@ type IAudioEndpointVolumeEvents struct {
 }
 
 type IAudioEndpointVolumeEventsVtbl struct {
-	OnNotify uintptr
+	QueryInterface uintptr
+	AddRef         uintptr
+	Release        uintptr
+	OnNotify       uintptr
 }

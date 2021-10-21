@@ -10,12 +10,12 @@ import (
 	"github.com/go-ole/go-ole"
 )
 
-func aevRegisterControlChangeNotify(aev *IAudioEndpointVolume, newChangeNotify *IAudioEndpointVolumeEvents) (err error) {
+func aevRegisterControlChangeNotify(aev *IAudioEndpointVolume, pNotify *IAudioEndpointVolumeEvents) (err error) {
 	hr, _, _ := syscall.Syscall(
 		aev.VTable().RegisterControlChangeNotify,
 		2,
 		uintptr(unsafe.Pointer(aev)),
-		uintptr(unsafe.Pointer(newChangeNotify)),
+		uintptr(unsafe.Pointer(pNotify)),
 		0)
 	if hr != 0 {
 		err = ole.NewError(hr)
@@ -23,12 +23,12 @@ func aevRegisterControlChangeNotify(aev *IAudioEndpointVolume, newChangeNotify *
 	return
 }
 
-func aevUnregisterControlChangeNotify(aev *IAudioEndpointVolume, newChangeNotify *IAudioEndpointVolumeEvents) (err error) {
+func aevUnregisterControlChangeNotify(aev *IAudioEndpointVolume, pNotify *IAudioEndpointVolumeEvents) (err error) {
 	hr, _, _ := syscall.Syscall(
 		aev.VTable().RegisterControlChangeNotify,
 		2,
 		uintptr(unsafe.Pointer(aev)),
-		uintptr(unsafe.Pointer(newChangeNotify)),
+		uintptr(unsafe.Pointer(pNotify)),
 		0)
 	if hr != 0 {
 		err = ole.NewError(hr)
